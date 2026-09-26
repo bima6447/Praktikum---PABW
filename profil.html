@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+  KERANGKA PROFIL — PABW 2026/2027 — Pertemuan 4
+  ==================================================================
+  Berkas ini SUDAH LENGKAP dan sudah lolos W3C Nu Html Checker serta
+  Lighthouse Accessibility. JANGAN mengubah struktur, landmark, label,
+  atau alt untuk memperbaiki tampilan — tampilan diubah dari berkas CSS.
+
+  Tugas Anda di Pertemuan 4:
+    1. Ganti isi yang ditandai  [ISI]  dengan milik Anda sendiri.
+    2. Buat lima berkas CSS di folder css/ lalu buka komentar
+       lima baris <link> di bawah  (lihat Lembar D).
+    3. WAJIB — tambahkan MINIMAL TIGA bagian baru di dalam <main>,
+       masing-masing memakai elemen semantik yang belum terpakai dan
+       berbeda satu sama lain  (lihat Lembar B.3). Setiap bagian wajib
+       diberi gaya memakai token yang sama, lalu dievaluasi W3C dan WCAG.
+-->
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <!-- ISI 1 — judul tab dan hasil pencarian. Ganti dengan nama Anda. -->
+  <title>Profil Bima Gusti Ramadhan — PABW 2026</title>
+  <meta name="description" content="Halaman profil mahasiswa PABW: tentang saya, karya, dan kontak.">
+
+  <!-- LEMBAR D — buat lima berkas di folder css/, lalu buka komentar ini.
+       URUTAN PEMUATAN MENENTUKAN CASCADE: tokens, base, layout, komponen, tema.
+       Lapisan paling bawah menang tanpa perlu !important. -->
+    <link rel="stylesheet" href="css/tokens.css"> 
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/komponen.css">
+    <link rel="stylesheet" href="css/tema.css">
+</head>
+<body>
+  <a class="lewati" href="#utama">Lewati ke konten utama</a>
+
+  <header class="kepala">
+    <!-- ISI 2 — nama Anda, atau nama panggilan yang Anda pakai. -->
+    <h1>Bima Gusti Ramadhan</h1>
+    <!-- ISI 3 — satu kalimat tentang diri Anda. -->
+    <p class="tagline">
+  Mahasiswa Informatika Universitas Islam Indonesia yang sedang belajar membangun web.<br>
+  <small><em>"Jika ada 1.000 alasan untuk menyerah, carilah 1 alasan untuk terus berjuang."</em></small>
+</p>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#karya">Karya</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="utama">
+
+    <section id="tentang">
+      <h2>Tentang saya</h2>
+
+      <figure class="foto">
+        <!-- ISI 4 — pakai foto Anda sendiri dengan nama berkas yang sama,
+             atau biarkan berkas contoh apa adanya. -->
+        <img src="media/foto-profil.jpg"
+             alt="Foto Profil Bima Gusti Ramadhan."
+             width="480" height="480" loading="lazy">
+        <figcaption>Bima Gusti Ramadhan - Mahasiswa Informatika</figcaption>
+      </figure>
+
+      <!-- ISI 5 — dua sampai tiga kalimat: asal, minat, dan hal yang
+           sedang Anda pelajari. -->
+      <p>Saya mahasiswa Program Studi Informatika UII asal Banjarnegara.
+         Saya tertarik untuk menjadi seorang full stack developer. Saat ini
+         saya sedang fokus belajar fondasi pengembangan web dan bahasa asing.</p>
+
+      <table>
+        <!-- ISI 6 — judul tabel dan isi minimal tiga baris. -->
+        <caption>Kegiatan yang saya ikuti semester ini</caption>
+        <thead>
+          <tr>
+            <th scope="col">Kegiatan</th>
+            <th scope="col">Peran</th>
+            <th scope="col">Waktu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Praktikum PABW</th>
+            <td>Peserta</td>
+            <td><time datetime="2026-09">September 2026</time></td>
+          </tr>
+          <tr>
+            <th scope="row">Belajar Inggris & Jepang</th>
+            <td>Pelajar Mandiri</td>
+            <td><time datetime="2026-10">Oktober 2026</time></td>
+          </tr>
+          <tr>
+            <th scope="row">Explore Full Stack Web</th>
+            <td>Pembelajar</td>
+            <td><time datetime="2026">2026</time></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="karya">
+      <h2>Karya saya</h2>
+      <!-- ISI 7 — tiga karya, proyek, atau hal yang pernah Anda buat.
+           Boleh tugas kuliah, karya pribadi, atau hobi. -->
+      <ul>
+        <li>UI Aplikasi Pendeteksi kualitas air — project akhir semester 1, 2025.</li>
+        <li>Aplikasi UMKM warmindo — project akhir semester 2, 2026.</li>
+        <li>Film Dokumenter Melestarikan Budaya — project P5 SMA, 2024.</li>
+      </ul>
+    </section>
+
+    <section id="kontak">
+      <h2>Hubungi saya</h2>
+      <p>Isi formulir berikut. Semua kolom bertanda wajib harus diisi.</p>
+
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Data pengirim</legend>
+
+          <p>
+            <label for="nama">Bima Gusti Ramadhan</label>
+            <input id="nama" name="nama" type="text"
+                   autocomplete="name" required>
+          </p>
+
+          <p>
+            <label for="email">gustibima323@gmail.com</label>
+            <input id="email" name="email" type="email"
+                   autocomplete="email" required>
+          </p>
+
+          <p>
+            <label for="nim">25523261</label>
+            <!-- ISI 8 — ganti angka di dalam pattern dengan NIM Anda sendiri. -->
+            <input id="nim" name="nim" type="text" inputmode="numeric"
+                   pattern="[0-9]{25523261}" aria-describedby="nim-bantuan" required>
+            <span id="nim-bantuan">Delapan digit angka, contoh 105230102.</span>
+          </p>
+
+          <p>
+            <label for="pesan">Pesan</label>
+            <textarea id="pesan" name="pesan" rows="4" required></textarea>
+          </p>
+
+          <button type="submit">Kirim</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Bagian 1: Menggunakan elemen <section> -->
+<section id="keahlian" class="kartu">
+  <h2>Keahlian Teknikal</h2>
+  <p>Fokus pengembangan saat ini penulisan HTML5 semantik, CSS modern , manajemen repositori Git, Inggris & Japan Language.</p>
+</section>
+
+<!-- Bagian 2: Menggunakan elemen <article> -->
+<article id="pendidikan" class="kartu">
+  <h2>Riwayat Pendidikan</h2>
+  <p><strong>TK Pertiwi Banjarnegara</strong> — (<time datetime="2010">2010</time> – <time datetime="2013">2013</time>)</p>
+  <p><strong>SD Negeri 4 Banjarnegara</strong> — (<time datetime="2014">2014</time> – <time datetime="2020">2020</time>)</p>
+  <p><strong>SMP Negeri 1 Banjarnegara</strong> — (<time datetime="2020">2020</time> – <time datetime="2022">2022</time>)</p>
+  <p><strong>SMA Negeri 1 Banjarnegara</strong> — Jurusan IPA (<time datetime="2022">2022</time> – <time datetime="2025">2025</time>)</p>
+  <p><strong>S1 Informatika</strong> — Universitas Islam Indonesia (<time datetime="2025">2025</time> – Sekarang)</p>
+</article>
+
+<!-- Bagian 3: Menggunakan elemen <aside> -->
+<aside id="minat" class="kartu">
+  <h2>Minat & Eksplorasi</h2>
+  <p>Sangat tertarik pada arsitektur Full Stack Web Development, pemrosesan bahasa asing (Inggris & Jepang), serta desain antarmuka yang ramah aksesibilitas.</p>
+</aside>
+
+    <!-- STRUKTUR TAMBAHAN (Lembar B.3) — minimal tiga bagian baru di sini,
+         sebelum tag penutup </main>. Wajib: satu <h2> per bagian, atribut id
+         yang belum terpakai, elemen semantik yang berbeda satu sama lain, dan
+         gaya memakai token yang sama. Tiga section di atas JANGAN diubah. -->
+
+  </main>
+
+  <footer class="kaki">
+    <!-- ISI 9 — nama, NIM, tahun. -->
+    <p>Bima Gusti Ramadhan · 25523261 · UII <time datetime="2026">2026</time></p>
+  </footer>
+</body>
+</html>
