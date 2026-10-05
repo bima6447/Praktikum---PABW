@@ -57,3 +57,11 @@ input:user-invalid {
 .form-kolom:has(input:user-invalid) .pesan-galat {
   display: block;
 }
+
+.kartu {
+  max-width: 800px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}

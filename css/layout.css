@@ -68,3 +68,84 @@ body {
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+}
+
+.navbar {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.isi {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  grid-template-areas:
+    "sisi utama"
+    "sisi bawah";
+}
+.sisi {
+  grid-area: sisi;
+}
+.utama {
+  grid-area: utama;
+}
+
+
+.galeri {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+}
+
+.galeri .kartu {
+  display: grid;
+  align-content: start;
+  min-height: 14rem;
+}
+
+
+.kartu__kaki {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.kartu__isi {
+  min-width: 0;
+}
+
+.kartu__judul {
+  overflow-wrap: anywhere;
+}
+
+.sorotan {
+  grid-column: span 2;
+}
+
+.papan {
+  grid-row: span 2; 
+}
+
+/* tablet: menambah kolom pada galeri ( galeri 2 kolom ) */
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* desktop. sidebar disandingkan dengan konten */
+@media (min-width: 60rem) {
+  .content {
+    grid-template-columns: 16rem 1fr;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

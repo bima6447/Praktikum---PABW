@@ -33,3 +33,8 @@ h3 { font-size: var(--text-md); }
 main p {
   max-width: 60ch;
 }
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
