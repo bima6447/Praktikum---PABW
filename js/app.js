@@ -41,3 +41,9 @@ console.table(selesai);
 
 const katalog = daftarProyek.find((proyek) => proyek.judul === "Katalog Produk");
 console.log(katalog);
+
+const kotaAsal = "Banjarnegara";
+console.log(kotaAsal);
+
+const hobi = ["Menonton"];
+console.log(hobi.join(","));
