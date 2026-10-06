@@ -24,10 +24,14 @@ function buatPerkenalan({ nama, peran}) {
     return `${nama}  — ${peran}`;
 }
 
+function formatListKeahlian(daftarKeahlian) {
+    return daftarKeahlian.map(item => item.toUpperCase()).join(", ");
+}
+
 const formatKeahlian = (daftar) => daftar.join(",");
 
 console.log(buatPerkenalan(profil));
-console.log(formatKeahlian(profil.keahlian));
+console.log(formatListKeahlian(profil.keahlian));
 
 console.log(buatPerkenalan({ nama: "Bima", peran: "Mahasiswa" }));
 console.log(buatPerkenalan({ nama: "Ehong", peran: "Programmer" }));
@@ -47,3 +51,6 @@ console.log(kotaAsal);
 
 const hobi = ["Menonton"];
 console.log(hobi.join(","));
+
+const keahlian = ["HTML", "CSS", "JavaScript"];
+console.log(formatListKeahlian(keahlian));
