@@ -70,3 +70,9 @@ input:user-invalid {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
