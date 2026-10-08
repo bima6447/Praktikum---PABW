@@ -12,9 +12,9 @@ const profil = {
     keahlian: ["HTML", "CSS", "JavaScript"],
 };
 
-const daftarProyek = [
-    { judul: "Halaman Profil", tahun: 2026, selesai: true },
-    { judul: "Katalog Produk", tahun: 2026, selesai: false },
+export const daftarProyek = [
+  { judul: "UI Aplikasi Pendeteksi kualitas air", tahun: 2025, selesai: true },
+  { judul: "Katalog Produk", tahun: 2026, selesai: false },
 ];
 
 const kalimat = `Halo, nama saya ${profil.nama}, Saya seorang ${profil.peran} dan sedang belajar ${profil.keahlian.length} hal.`;

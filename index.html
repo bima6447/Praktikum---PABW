@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/komponen.css">
     <link rel="stylesheet" href="css/tema.css">
+    <link rel="icon" href="data:,">
 </head>
 <body>
   <a class="lewati" href="#utama">Lewati ke konten utama</a>
@@ -104,14 +105,16 @@
     </section>
 
     <section id="karya">
-      <h2>Karya saya</h2>
-      <!-- ISI 7 — tiga karya, proyek, atau hal yang pernah Anda buat.
-           Boleh tugas kuliah, karya pribadi, atau hobi. -->
-      <ul>
-        <li>UI Aplikasi Pendeteksi kualitas air — project akhir semester 1, 2025.</li>
-        <li>Aplikasi UMKM warmindo — project akhir semester 2, 2026.</li>
-        <li>Film Dokumenter Melestarikan Budaya — project P5 SMA, 2024.</li>
-      </ul>
+      <h2>Proyek</h2>
+     
+      <div id="filter">
+        <button data-kategori="semua" class="aktif">Semua</button>
+        <button data-kategori="web">Web</button>
+        <button data-kategori="data">Data</button>
+      </div>
+
+      <ul id="daftar"></ul>
+      <p id="pesan-kosong" hidden>Tidak ada proyek pada kategori itu</p>
     </section>
 
     <section id="kontak">
@@ -186,5 +189,6 @@
     <p>Bima Gusti Ramadhan · 25523261 · UII <time datetime="2026">2026</time></p>
   </footer>
   <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/dom.js"></script>
 </body>
 </html>
