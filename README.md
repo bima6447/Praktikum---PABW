@@ -17,3 +17,12 @@ Bagian yang Dibantu AI
 - Validasi Formulir & Bug Fixing: Mengidentifikasi dan membenahi kesalahan penulisan regex `pattern` NIM pada `index.html`, menerapkan atribut `novalidate`, serta menambahkan logika real-time check (`checkValidity()`) untuk mengontrol status tombol kirim.
 - Styling CSS: Memberikan saran aturan CSS untuk kelas `.aktif` dan status `button:disabled` pada `css/komponen.css`.
 - Pemahaman Konsep & Worksheet: Membantu menjelaskan jawaban analisis terkait manipulasi DOM, event delegation, penggunaan `textContent` vs `innerHTML`, serta penanganan kasus eror pada worksheet.
+
+## Pertemuan 10 - Fetch API & DOM
+Dalam praktikum ini, saya menggunakan AI untuk membantu:
+1. Menjelaskan konsep `fetch` API dan manipulasi DOM.
+2. Menyelesaikan error *Uncaught SyntaxError* pada impor modul.
+3. Membatasi tampilan data kartu agar rapi.
+git add .
+git commit -m "P10: periksa, lalu simpan"
+git push origin main
