@@ -1,17 +1,17 @@
 import { ambilNotisia } from './api.js';
 
+// --- Variabel & Profil ---
 const nama = "Bima";
 const jumlahProyek = 3;
 let pilihanAktif = "semua";
 
 console.log(typeof nama);
 console.log(typeof jumlahProyek);
-console.log(typeof belumDibuat);
 
 const profil = {
-    nama: "Bima Gusti Ramadhan",
-    peran: "Mahasiswa Informatika",
-    keahlian: ["HTML", "CSS", "JavaScript"],
+  nama: "Bima Gusti Ramadhan",
+  peran: "Mahasiswa Informatika",
+  keahlian: ["HTML", "CSS", "JavaScript"],
 };
 
 export const daftarProyek = [
@@ -22,15 +22,13 @@ export const daftarProyek = [
 const kalimat = `Halo, nama saya ${profil.nama}, Saya seorang ${profil.peran} dan sedang belajar ${profil.keahlian.length} hal.`;
 console.log(kalimat);
 
-function buatPerkenalan({ nama, peran}) {
-    return `${nama}  — ${peran}`;
+function buatPerkenalan({ nama, peran }) {
+  return `${nama}  — ${peran}`;
 }
 
 function formatListKeahlian(daftarKeahlian) {
-    return daftarKeahlian.map(item => item.toUpperCase()).join(", ");
+  return daftarKeahlian.map(item => item.toUpperCase()).join(", ");
 }
-
-const formatKeahlian = (daftar) => daftar.join(",");
 
 console.log(buatPerkenalan(profil));
 console.log(formatListKeahlian(profil.keahlian));
@@ -42,33 +40,7 @@ console.log(buatPerkenalan({ nama: "Rahman", peran: "Designer" }));
 console.table(profil.keahlian);
 console.table(daftarProyek);
 
-const selesai = daftarProyek.filter((proyek) => proyek.selesai);
-console.table(selesai);
-
-const katalog = daftarProyek.find((proyek) => proyek.judul === "Katalog Produk");
-console.log(katalog);
-
-const kotaAsal = "Banjarnegara";
-console.log(kotaAsal);
-
-const hobi = ["Menonton"];
-console.log(hobi.join(","));
-
-const keahlian = ["HTML", "CSS", "JavaScript"];
-console.log(formatListKeahlian(keahlian));
-
-async function muatHalaman() {
-  try {
-    const data = await ambilNotisia();
-    console.log('Data berhasil didapat:', data);
-  } catch (galat) {
-    console.error('Terjadi kesalahan:', galat.message);
-  }
-}
-
-muatHalaman();
-
-// Data buatan untuk uji coba Peta Data C.2
+// --- Simulasi Pengaksesan Peta Data C.2 ---
 const dataUji = {
   penulis: { nama: "Bima", peran: "Mahasiswa" },
   daftarNotisia: ["Pengumuman 1", "Pengumuman 2"],
@@ -76,16 +48,47 @@ const dataUji = {
   statusAktif: true
 };
 
-// 1. Akses Objek (mengambil nama dari objek penulis)
 console.log("Nama Penulis:", dataUji.penulis.nama);
-
-// 2. Akses Larik / Array (looping setiap item pengumuman)
 dataUji.daftarNotisia.forEach((item) => {
   console.log("Isi Notisia:", item);
 });
-
-// 3. Akses Teks / Angka
 console.log("Jumlah Data:", dataUji.jumlahData);
-
-// 4. Akses Boolean / Null
 console.log("Status Aktif:", dataUji.statusAktif);
+
+// --- D.1 Telusuri Larik dan Gambar Kartu ---
+const wadah = document.querySelector('#daftar');
+
+function gambar(daftar) {
+  wadah.textContent = '';
+
+  daftar.forEach(function (n) {
+    const kartu = document.createElement('article');
+    const judul = document.createElement('h3');
+
+    // Gunakan n.titulu jika ada, atau n.title dari JsonPlaceholder API
+    judul.textContent = n.titulu || n.title;
+
+    kartu.appendChild(judul);
+    wadah.appendChild(kartu);
+  });
+}
+
+async function tampilkan() {
+  if (!wadah) return;
+  wadah.textContent = 'Memuat...';
+
+  try {
+    const daftar = await ambilNotisia();
+
+    if (!daftar || daftar.length === 0) {
+      wadah.textContent = 'Belum ada notisia';
+      return;
+    }
+
+    gambar(daftar);
+  } catch (galat) {
+    wadah.textContent = 'Gagal memuat data: ' + galat.message;
+  }
+}
+
+tampilkan();
