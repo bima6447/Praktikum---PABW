@@ -1,3 +1,4 @@
+import { ambilNotisia } from './api.js';
 const nama = "Bima";
 const jumlahProyek = 3;
 let pilihanAktif = "semua";
