@@ -1,4 +1,5 @@
 import { ambilNotisia } from './api.js';
+
 const nama = "Bima";
 const jumlahProyek = 3;
 let pilihanAktif = "semua";
@@ -55,3 +56,14 @@ console.log(hobi.join(","));
 
 const keahlian = ["HTML", "CSS", "JavaScript"];
 console.log(formatListKeahlian(keahlian));
+
+async function muatHalaman() {
+  try {
+    const data = await ambilNotisia();
+    console.log('Data berhasil didapat:', data);
+  } catch (galat) {
+    console.error('Terjadi kesalahan:', galat.message);
+  }
+}
+
+muatHalaman();
