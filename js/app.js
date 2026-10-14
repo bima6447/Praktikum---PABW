@@ -67,3 +67,25 @@ async function muatHalaman() {
 }
 
 muatHalaman();
+
+// Data buatan untuk uji coba Peta Data C.2
+const dataUji = {
+  penulis: { nama: "Bima", peran: "Mahasiswa" },
+  daftarNotisia: ["Pengumuman 1", "Pengumuman 2"],
+  jumlahData: 100,
+  statusAktif: true
+};
+
+// 1. Akses Objek (mengambil nama dari objek penulis)
+console.log("Nama Penulis:", dataUji.penulis.nama);
+
+// 2. Akses Larik / Array (looping setiap item pengumuman)
+dataUji.daftarNotisia.forEach((item) => {
+  console.log("Isi Notisia:", item);
+});
+
+// 3. Akses Teks / Angka
+console.log("Jumlah Data:", dataUji.jumlahData);
+
+// 4. Akses Boolean / Null
+console.log("Status Aktif:", dataUji.statusAktif);
