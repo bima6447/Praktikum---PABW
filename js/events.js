@@ -1,6 +1,5 @@
 // js/events.js
-import { state } from './state.js';
-import { render } from './dom.js';
+import { pilihKategori } from './state.js';
 
 export function pasangPendengar() {
   const tombolFilter = document.querySelectorAll('#filter button');
@@ -13,10 +12,9 @@ export function pasangPendengar() {
       tombol.classList.add('aktif');
 
       const kategori = tombol.dataset.kategori;
-      state.kategoriAktif = kategori;
-
-      // Gambar ulang tampilan berdasarkan state baru
-      render(state);
+      
+      // Panggil fungsi pengubah dari state.js (tanpa ubah state & tanpa panggil render langsung)
+      pilihKategori(kategori);
     });
   });
 }

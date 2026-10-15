@@ -1,42 +1,51 @@
 // js/dom.js
 
 const wadah = document.querySelector('#daftar');
-const pesanKosong = document.querySelector('#pesan-kosong');
+const kosong = document.querySelector('#pesan-kosong');
+
+// Fungsi pembantu untuk membuat elemen kartu/item HTML
+function buatKartu(item) {
+  const li = document.createElement('li');
+  const kartu = document.createElement('article');
+  kartu.classList.add('kartu');
+
+  const judul = document.createElement('h3');
+  judul.textContent = item.titulu || item.title || item.judul;
+
+  kartu.appendChild(judul);
+  li.appendChild(kartu);
+  return li;
+}
+
+// Fungsi saring membaca kategori dari state.kategoriAktif
+function saring(state) {
+  const daftar = state.daftarProyek || [];
+  if (!state.kategoriAktif || state.kategoriAktif === 'semua') {
+    return daftar;
+  }
+  return daftar.filter(function (item) {
+    if (item.kategori) {
+      return item.kategori === state.kategoriAktif;
+    }
+    return state.kategoriAktif === 'web' ? item.id % 2 === 0 : item.id % 2 !== 0;
+  });
+}
 
 export function render(state) {
   if (!wadah) return;
-  wadah.textContent = '';
 
-  let daftar = state.daftarProyek || [];
+  // 1. Kosongkan wadah
+  wadah.textContent = "";
 
-  // Filter data berdasarkan kategori yang sedang aktif di state
-  if (state.kategoriAktif && state.kategoriAktif !== 'semua') {
-    daftar = daftar.filter(function (item) {
-      if (item.kategori) {
-        return item.kategori === state.kategoriAktif;
-      }
-      // Logika penyaring API P10 (ID genap untuk 'web', ganjil untuk 'data')
-      return state.kategoriAktif === 'web' ? item.id % 2 === 0 : item.id % 2 !== 0;
-    });
-  }
+  const tampil = saring(state);
 
-  if (daftar.length === 0) {
-    if (pesanKosong) pesanKosong.hidden = false;
+  // 2. Periksa keadaan kosong
+  if (tampil.length === 0) {
+    if (kosong) kosong.hidden = false;
     return;
   }
+  if (kosong) kosong.hidden = true;
 
-  if (pesanKosong) pesanKosong.hidden = true;
-
-  daftar.slice(0, 6).forEach(function (n) {
-    const item = document.createElement('li');
-    const kartu = document.createElement('article');
-    kartu.classList.add('kartu');
-
-    const judul = document.createElement('h3');
-    judul.textContent = n.titulu || n.title || n.judul;
-
-    kartu.appendChild(judul);
-    item.appendChild(kartu);
-    wadah.appendChild(item);
-  });
+  // 3. Isi ulang wadah
+  tampil.slice(0, 6).forEach((item) => wadah.append(buatKartu(item)));
 }
