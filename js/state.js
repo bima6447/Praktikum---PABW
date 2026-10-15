@@ -8,10 +8,17 @@ export function simpan(state) {
   localStorage.setItem(KUNCI, JSON.stringify(isi));
 }
 
+// Fungsi muat diperbarui sesuai modul E.2
 export function muat() {
   try {
-    return JSON.parse(localStorage.getItem(KUNCI));
+    const isi = JSON.parse(localStorage.getItem(KUNCI));
+    if (isi?.versi !== VERSI) {
+      localStorage.removeItem(KUNCI); // bentuk lama: buang
+      return null;
+    }
+    return isi;
   } catch {
+    localStorage.removeItem(KUNCI); // isi rusak: buang
     return null;
   }
 }
@@ -26,7 +33,7 @@ const simpanan = muat();
 
 export const state = {
   daftarProyek: [],
-  kategoriAktif: (simpanan && simpanan.versi === VERSI) ? simpanan.kategoriAktif : 'semua'
+  kategoriAktif: simpanan?.kategoriAktif || 'semua'
 };
 
 export function pilihKategori(kategori) {
