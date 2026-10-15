@@ -1,73 +1,42 @@
-import { daftarProyek } from "./app.js";
+// js/dom.js
 
-const wadah = document.querySelector("#daftar");
-const kosong = document.querySelector("#pesan-kosong");
-const barisFilter = document.querySelector("#filter");
-const formulir = document.querySelector("form");
-const tombolKirim = formulir?.querySelector('button[type="submit"]');
+const wadah = document.querySelector('#daftar');
+const pesanKosong = document.querySelector('#pesan-kosong');
 
-function buatKartu(proyek) {
-  const li = document.createElement("li");
-  li.className = "kartu";
-  li.textContent = proyek.judul;
-  return li;
-}
-
-function render(daftar) {
+export function render(state) {
   if (!wadah) return;
-  wadah.textContent = "";
+  wadah.textContent = '';
+
+  let daftar = state.daftarProyek || [];
+
+  // Filter data berdasarkan kategori yang sedang aktif di state
+  if (state.kategoriAktif && state.kategoriAktif !== 'semua') {
+    daftar = daftar.filter(function (item) {
+      if (item.kategori) {
+        return item.kategori === state.kategoriAktif;
+      }
+      // Logika penyaring API P10 (ID genap untuk 'web', ganjil untuk 'data')
+      return state.kategoriAktif === 'web' ? item.id % 2 === 0 : item.id % 2 !== 0;
+    });
+  }
 
   if (daftar.length === 0) {
-    if (kosong) kosong.hidden = false;
+    if (pesanKosong) pesanKosong.hidden = false;
     return;
   }
-  if (kosong) kosong.hidden = true;
 
-  daftar.forEach((proyek) => wadah.append(buatKartu(proyek)));
-}
+  if (pesanKosong) pesanKosong.hidden = true;
 
-function tandaiTombolAktif(tombolAktif) {
-  document.querySelectorAll("#filter button").forEach((tombol) => {
-    tombol.classList.toggle("aktif", tombol === tombolAktif);
-  });
-}
+  daftar.slice(0, 6).forEach(function (n) {
+    const item = document.createElement('li');
+    const kartu = document.createElement('article');
+    kartu.classList.add('kartu');
 
-// Render awal
-render(daftarProyek);
+    const judul = document.createElement('h3');
+    judul.textContent = n.titulu || n.title || n.judul;
 
-// Filter proyek
-if (barisFilter) {
-  barisFilter.addEventListener("click", (event) => {
-    const tombol = event.target.closest("button");
-    if (!tombol) return;
-
-    tandaiTombolAktif(tombol);
-
-    const kategori = tombol.dataset.kategori;
-    const terpilih = daftarProyek.filter(
-      (proyek) => kategori === "semua" || proyek.kategori === kategori
-    );
-
-    render(terpilih);
-  });
-}
-
-// Logika Validasi Tombol Kirim (D.3)
-function periksaKelayakanForm() {
-  if (formulir && tombolKirim) {
-    tombolKirim.disabled = !formulir.checkValidity();
-  }
-}
-
-if (formulir && tombolKirim) {
-  // Cek saat pertama kali dimuat
-  periksaKelayakanForm();
-
-  // Cek setiap kali input diisi / diubah
-  formulir.addEventListener("input", periksaKelayakanForm);
-
-  // Cegah pengiriman jika belum valid
-  formulir.addEventListener("submit", (event) => {
-    event.preventDefault();
+    kartu.appendChild(judul);
+    item.appendChild(kartu);
+    wadah.appendChild(item);
   });
 }
