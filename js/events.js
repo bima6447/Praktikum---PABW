@@ -1,20 +1,21 @@
-// js/events.js
-import { pilihKategori } from './state.js';
+import { pilihKategori, aturUlang } from './state.js';
 
 export function pasangPendengar() {
-  const tombolFilter = document.querySelectorAll('#filter button');
+  const tombolFilter = document.querySelectorAll('#filter button[data-kategori]');
 
   tombolFilter.forEach(function (tombol) {
     tombol.addEventListener('click', function () {
-      tombolFilter.forEach(function (b) {
-        b.classList.remove('aktif');
-      });
-      tombol.classList.add('aktif');
-
       const kategori = tombol.dataset.kategori;
-      
-      // Panggil fungsi pengubah dari state.js (tanpa ubah state & tanpa panggil render langsung)
-      pilihKategori(kategori);
+      if (kategori) {
+        pilihKategori(kategori);
+      }
     });
   });
+
+  const tombolReset = document.querySelector('#btn-reset');
+  if (tombolReset) {
+    tombolReset.addEventListener('click', function () {
+      aturUlang();
+    });
+  }
 }

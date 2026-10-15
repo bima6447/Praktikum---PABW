@@ -1,18 +1,40 @@
-// js/state.js
 import { render } from './dom.js';
 
-export const state = {
-  daftarProyek: [],
-  kategoriAktif: 'semua'
-};
+const KUNCI = "pabw-p11";
+const VERSI = 2;
 
-// Fungsi pengubah kategori sekaligus memicu render
-export function pilihKategori(kategori) {
-  state.kategoriAktif = kategori;
+export function simpan(state) {
+  const isi = { versi: VERSI, kategoriAktif: state.kategoriAktif };
+  localStorage.setItem(KUNCI, JSON.stringify(isi));
+}
+
+export function muat() {
+  try {
+    return JSON.parse(localStorage.getItem(KUNCI));
+  } catch {
+    return null;
+  }
+}
+
+export function aturUlang() {
+  localStorage.removeItem(KUNCI);
+  state.kategoriAktif = 'semua';
   render(state);
 }
 
-// Fungsi pengubah data proyek (bila digunakan dari API/app.js)
+const simpanan = muat();
+
+export const state = {
+  daftarProyek: [],
+  kategoriAktif: (simpanan && simpanan.versi === VERSI) ? simpanan.kategoriAktif : 'semua'
+};
+
+export function pilihKategori(kategori) {
+  state.kategoriAktif = kategori;
+  simpan(state);
+  render(state);
+}
+
 export function isiDaftarProyek(daftar) {
   state.daftarProyek = daftar;
   render(state);
