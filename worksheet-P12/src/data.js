@@ -1,8 +1,4 @@
-import { ref } from 'vue'
-
-export const kategoriAktif = ref('Semua')
-export const daftarKategori = ['Semua', 'Web', 'Mobile', 'UI/UX', 'Film']
-
+// src/data.js
 export const dataProyek = [
   { 
     id: 1, 
@@ -20,6 +16,6 @@ export const dataProyek = [
     id: 3, 
     judul: 'Film Dokumenter Tentang Budaya di Banjarnegara', 
     deskripsi: 'Film dokumenter melestarikan ebeg gading banjarnegara.', 
-    kategori: 'Film' 
+    kategori: 'Web' // Pastikan tertulis 'Web' (bukan 'Film' atau 'web')
   }
 ]

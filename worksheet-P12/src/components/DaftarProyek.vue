@@ -1,12 +1,14 @@
 <script setup>
 import { computed } from 'vue'
-import { dataProyek, kategoriAktif } from '../data.js'
+import { state } from '../state.js'
 
 const proyekTersaring = computed(() => {
-  if (!kategoriAktif.value || kategoriAktif.value === 'Semua') {
-    return dataProyek
+  if (!state.kategoriAktif || state.kategoriAktif.toLowerCase() === 'semua') {
+    return state.daftarProyek
   }
-  return dataProyek.filter(item => item.kategori === kategoriAktif.value)
+  return state.daftarProyek.filter(
+    item => item.kategori.toLowerCase() === state.kategoriAktif.toLowerCase()
+  )
 })
 </script>
 
