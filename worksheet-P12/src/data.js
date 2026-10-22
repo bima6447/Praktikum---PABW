@@ -1,17 +1,25 @@
-export const daftarProyek = [
-  { id: 1, judul: "UI Aplikasi Pendeteksi Kualitas Air", kategori: "web" },
-  { id: 2, judul: "Katalog Produk", kategori: "data" },
-];
+import { ref } from 'vue'
 
-// Fungsi murni pemformat
-export function buatPerkenalan(nama, peran) {
-  return `Halo, saya ${nama} sebagai ${peran}.`;
-}
+export const kategoriAktif = ref('Semua')
+export const daftarKategori = ['Semua', 'Web', 'Mobile', 'UI/UX', 'Film']
 
-export function formatKeahlian(daftarKeahlian) {
-  return daftarKeahlian.join(', ');
-}
-
-export function formatTanggal(nilai) {
-  return new Date(nilai).toLocaleDateString('id-ID');
-}
+export const dataProyek = [
+  { 
+    id: 1, 
+    judul: 'Aplikasi Pendeteksi Kualitas Air', 
+    deskripsi: 'Sistem monitoring kualitas air.', 
+    kategori: 'UI/UX' 
+  },
+  { 
+    id: 2, 
+    judul: 'Aplikasi Warmindo', 
+    deskripsi: 'Aplikasi Warmindo Online.', 
+    kategori: 'Mobile' 
+  },
+  { 
+    id: 3, 
+    judul: 'Film Dokumenter Tentang Budaya di Banjarnegara', 
+    deskripsi: 'Film dokumenter melestarikan ebeg gading banjarnegara.', 
+    kategori: 'Film' 
+  }
+]
